@@ -1,7 +1,5 @@
 import os
-from flask import (
-    Flask, flash, render_template, redirect, 
-    request, session, url_for)
+from flask import (Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
@@ -27,9 +25,9 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/products")
+@app.route("/blog")
 def products():
-    return render_template("products.html")
+    return render_template("blog.html")
 
 
 @app.route("/store")
