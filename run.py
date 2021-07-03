@@ -19,22 +19,22 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     posts = mongo.db.spotting_post.find()
-    return render_template("index.html", page_title="Home Page", posts=posts)
+    return render_template("index.html", posts=posts, page_title="Home")
 
 
 @app.route("/new_user")
 def new_user():
-    return render_template("new_user.html", page_title="New User")
+    return render_template("new_user.html")
 
 
 @app.route("/about")
 def about():
-    return render_template("about.html", page_title="About")
+    return render_template("about.html")
 
 
 @app.route("/blog")
 def products():
-    return render_template("blog.html", page_title="Blog")
+    return render_template("blog.html")
 
 
 @app.route("/store")
