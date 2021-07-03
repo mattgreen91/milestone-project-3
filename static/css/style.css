@@ -3,3 +3,9 @@
 .navbar-collapse {
     z-index: 1;
 }
+
+/* colour of navigation bar */
+
+#mainNav {
+    background-color: rgba(256,256,256,.12)
+}
