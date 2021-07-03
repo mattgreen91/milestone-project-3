@@ -1,0 +1,5 @@
+/* bring mobile navigation bar layer in front of body */
+
+.navbar-collapse {
+    z-index: 1;
+}
