@@ -27,6 +27,13 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
 
+    <!-- static CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <!-- block custom scripts -->
+    {% block styles %}
+    {% endblock %}
+
 </head>
 
 <body>
@@ -86,6 +93,13 @@
 
 <!-- Materialize Script -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- static javascript file -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<!-- block custom scripts -->
+{% block scripts %}
+{% endblock %}
 
 </body>
 
