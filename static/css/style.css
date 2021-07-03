@@ -1,11 +1,32 @@
-/* bring mobile navigation bar layer in front of body */
-
-.navbar-collapse {
-    z-index: 1;
-}
-
 /* colour of navigation bar */
 
 #mainNav {
     background-color: rgba(256,256,256,.12)
+}
+
+/* mobile nav menu toggle button colour */
+
+button:focus {
+    background-color: #000000;
+}
+
+/* format drop down nav menu for smaller screens */
+
+.navbar-collapse {
+    z-index: 1;
+    background-color: rgba(0,0,0,0.5);
+}
+
+nav ul a {
+    text-align: center;
+}
+
+nav ul a:hover {
+    background-color: rgba(0,0,0,0.7);
+}
+
+/* change button colours */
+
+.btn {
+    background-color: orange;
 }
