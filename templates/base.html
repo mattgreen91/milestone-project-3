@@ -58,18 +58,24 @@
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{{ url_for('about')}}">About</a>
           </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{{ url_for('blog')}}">Blog</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{{ url_for('login')}}">Login</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{{ url_for('new_user')}}">New User</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{{ url_for('account_settings', username=session['user']) }}">Settings</a>
-          </li>
+          {% if session.user %}
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{{ url_for('blog')}}">Blog</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{{ url_for('account_settings', username=session['user']) }}">Settings</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{{ url_for('logout')}}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{{ url_for('login')}}">Login</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{{ url_for('new_user')}}">New User</a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </div>

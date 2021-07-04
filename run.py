@@ -98,6 +98,14 @@ def account_settings(username):
     return redirect(url_for("login.html"))
 
 
+@app.route("/logout")
+def logout():
+    # delete active cookie session, so user is logged out
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "0.0.0.0"),
