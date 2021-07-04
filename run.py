@@ -22,9 +22,32 @@ def index():
     return render_template("index.html", posts=posts, page_title="Home")
 
 
-@app.route("/new_user")
+@app.route("/new_user", methods=["GET", "POST"])
 def new_user():
+    if request.method == "POST":
+        # check if username already exists in database
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username taken")
+            return redirect(url_for("new_user"))
+
+        new_user = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(new_user)
+
+        #put the user into active session cookie
+        session["user"] = request.form.get("username").lower()
+        flash("New user created successfully")
     return render_template("new_user.html")
+
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 
 @app.route("/about")
@@ -33,7 +56,7 @@ def about():
 
 
 @app.route("/blog")
-def products():
+def blog():
     return render_template("blog.html")
 
 
