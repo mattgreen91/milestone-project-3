@@ -30,7 +30,7 @@ def new_user():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username taken")
+            flash("This username is already taken")
             return redirect(url_for("new_user"))
 
         new_user = {

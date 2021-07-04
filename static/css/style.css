@@ -69,8 +69,8 @@ button:focus {
 
   /* invalid color */
   .input-field input[type=text].invalid {
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
   }
   /* icon prefix focus color */
   .input-field .prefix.active {
@@ -84,6 +84,18 @@ button:focus {
     background-color: orange;
     text-align: center;
     display: block;
+
+}
+
+/* hyperlink colours */
+
+h6 a {
+    color: black;
+}
+
+h6 a:hover {
+    color: orange;
+}
 
 /* format drop down nav menu for smaller screens */
 
