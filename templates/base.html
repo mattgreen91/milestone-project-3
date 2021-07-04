@@ -72,8 +72,23 @@
     </div>
   </nav>
 
-  {% block content %}
-  {% endblock %}
+  <!-- flash messages -->
+  <section class="py-lg-4">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="container">
+            <h4 class="row flashes">{{ message }}</h4>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </section>
+
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
 
    <footer class="footer text-faded text-center py-5">
     <div class="container">

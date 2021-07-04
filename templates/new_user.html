@@ -9,6 +9,7 @@
                 <span class="section-heading-upper">Come On In</span>
                 <span class="section-heading-lower">Register</span>
               </h2>
+              <form method="POST" action="{{ url_for('new_user') }}">
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="fas fa-user-plus prefix light-grey-text"></i>
@@ -24,6 +25,7 @@
                   <div class="row">
                   <button type="submit" class="col s12 btn-large orange">Register</button>
                 </div>
+              </form>
 
               <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
                 <li class="list-unstyled-item list-hours-item d-flex">

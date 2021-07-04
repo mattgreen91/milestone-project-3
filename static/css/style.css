@@ -27,24 +27,6 @@ button:focus {
     background-color: rgba(0,0,0,.6);
 }
 
-/* format drop down nav menu for smaller screens */
-
-@media only screen and (max-width: 991px) {
-
-    .navbar-collapse {
-        z-index: 1;
-        background-color: rgba(0,0,0,0.5);
-    }
-    
-    nav ul a {
-        text-align: center;
-    }
-    
-    nav ul a:hover {
-        background-color: rgba(0,0,0,0.7);
-    }
-}
-
 /* input fields colours */
 
   /* label color */
@@ -85,7 +67,6 @@ button:focus {
       box-shadow: 0 1px 0 0 orange !important;
   }
 
-
   /* invalid color */
   .input-field input[type=text].invalid {
     border-bottom: 1px solid #000;
@@ -95,3 +76,29 @@ button:focus {
   .input-field .prefix.active {
     color: orange;
   }
+
+/* flash messages formatting */
+
+.flashes {
+    line-height: 2;
+    background-color: orange;
+    text-align: center;
+    display: block;
+
+/* format drop down nav menu for smaller screens */
+
+@media only screen and (max-width: 991px) {
+
+    .navbar-collapse {
+        z-index: 1;
+        background-color: rgba(0,0,0,0.5);
+    }
+    
+    nav ul a {
+        text-align: center;
+    }
+    
+    nav ul a:hover {
+        background-color: rgba(0,0,0,0.7);
+    }
+}
