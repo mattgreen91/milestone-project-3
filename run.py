@@ -81,9 +81,9 @@ def blog():
     return render_template("blog.html")
 
 
-@app.route("/store")
-def store():
-    return render_template("store.html")
+@app.route("/account_settings")
+def account_settings():
+    return render_template("account_settings.html")
 
 
 if __name__ == "__main__":
