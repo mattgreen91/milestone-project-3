@@ -68,7 +68,7 @@
             <a class="nav-link text-uppercase text-expanded" href="{{ url_for('new_user')}}">New User</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{{ url_for('account_settings')}}">Settings</a>
+            <a class="nav-link text-uppercase text-expanded" href="{{ url_for('account_settings', username=session['user']) }}">Settings</a>
           </li>
         </ul>
       </div>

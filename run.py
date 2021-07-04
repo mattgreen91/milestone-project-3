@@ -42,6 +42,8 @@ def new_user():
         # put the user into active session cookie
         session["user"] = request.form.get("username").lower()
         flash("New user created successfully")
+        return redirect(url_for("account_settings", username=session["user"]))
+
     return render_template("new_user.html")
 
 
@@ -57,7 +59,10 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome back {}".format(request.form.get("username")))
+                    flash("Welcome back {}".format(
+                        request.form.get("username")))
+                    return redirect(url_for(
+                        "account_settings", username=session["user"]))
             else:
                 # incorrect password
                 flash("Incorrect login details entered. Please try again")
@@ -81,9 +86,12 @@ def blog():
     return render_template("blog.html")
 
 
-@app.route("/account_settings")
-def account_settings():
-    return render_template("account_settings.html")
+@app.route("/<username>", methods=["GET", "POST"])
+def account_settings(username):
+    # take username from session on database
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    return render_template("account_settings.html", username=username)
 
 
 if __name__ == "__main__":
