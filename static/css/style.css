@@ -77,6 +77,10 @@ button:focus {
     color: orange;
   }
 
+  .blog-title {
+      color: orange;
+  }
+
 /* flash messages formatting */
 
 .flashes {
