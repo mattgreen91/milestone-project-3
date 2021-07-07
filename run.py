@@ -81,6 +81,11 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/add")
+def add():
+    return render_template("add.html")
+
+
 @app.route("/blog")
 def blog():
     return render_template("blog.html")
