@@ -101,6 +101,17 @@ h6 a:hover {
     color: orange;
 }
 
+/* modify data buttons formatting */
+
+.modify {
+    text-decoration: none;
+}
+
+.modify:hover {
+    text-decoration: none;
+    color: white;
+}
+
 /* format drop down nav menu for smaller screens */
 
 @media only screen and (max-width: 991px) {
