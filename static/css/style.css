@@ -192,13 +192,11 @@ h6 a:hover {
 
 .hyperlink-lost {
     color: black;
+    text-decoration: none;
 }
 
 .hyperlink-lost:hover {
     color: orange;
-}
-
-.hyperlink-lost a {
     text-decoration: none;
 }
 
