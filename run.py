@@ -78,10 +78,29 @@ def login():
 
 @app.route("/modify_cars")
 def modify_cars():
+    cars = list(mongo.db.car.find().sort("car_make", 1))
     if session["user"] == "admin123":
-        return render_template("modify_cars.html")
+        return render_template("modify_cars.html", cars=cars)
     else:
         return redirect(url_for("index"))
+
+
+@app.route("/new_make", methods=["GET", "POST"])
+def new_make():
+    if request.method == "POST":
+        car_make = {
+            "car_make": request.form.get("car_make"),
+        }
+        mongo.db.car.insert_one(car_make)
+        flash("Car Make Added Successfully")
+        return redirect(url_for("modify_cars"))
+
+
+@app.route("/remove_make/<car_id>")
+def remove_make(car_id):
+    mongo.db.car.remove({"_id": ObjectId(car_id)})
+    flash("Car Make Has Been Removed")
+    return redirect(url_for("modify_cars"))
 
 
 @app.route("/add", methods=["GET", "POST"])
@@ -160,4 +179,4 @@ if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "0.0.0.0"),
         port=int(os.environ.get("PORT", "5000")),
-        debug=False)
+        debug=True)

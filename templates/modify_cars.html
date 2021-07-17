@@ -1,65 +1,79 @@
 {% extends "base.html" %}
 {% block content %}
-  <section class="page-section">
-    <div class="container">
-      <div class="product-item">
-        <div class="product-item-title d-flex">
-          <div class="bg-faded p-5 d-flex ml-auto rounded">
-            <h2 class="section-heading mb-0">
-              <span class="section-heading-upper">Modify</span>
-              <span class="section-heading-lower">Car Makes</span>
-            </h2>
-          </div>
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+        <div class="bg-faded p-5 d-flex ml-auto rounded">
+          <h2 class="section-heading mb-0">
+            <span class="section-heading-lower">Add a New Car</span>
+          </h2>
         </div>
-        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ url_for('static', filename='img/porche.jpg') }}" alt="">
-        <div class="product-item-description d-flex mr-auto">
-          <div class="bg-faded p-5 rounded">
-            <p class="mb-0">we love cars</p>
-          </div>
+      </div>
+      <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+        src="{{ url_for('static', filename='img/porche.jpg') }}" alt="">
+      <div class="product-item-description d-flex mr-auto">
+        <div class="bg-faded p-5 rounded">
+          <form method="POST" action="{{ url_for('new_make') }}">
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="New Car Make" id="car_make" name="car_make" class="validate">
+              </div>
+              <div class="text-center">
+                <button class="btn waves-effect waves-light orangehover" type="submit" name="action">Add Car
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="mb-0">To Add a Car enter the Make above then press 'Add Car'.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="page-section">
-    <div class="container">
-      <div class="product-item">
-        <div class="product-item-title d-flex">
-          <div class="bg-faded p-5 d-flex mr-auto rounded">
-            <h2 class="section-heading mb-0">
-              <span class="section-heading-upper">Cars and more</span>
-              <span class="section-heading-lower">Bakery &amp; Kitchen</span>
-            </h2>
-          </div>
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+        <div class="bg-faded p-5 d-flex ml-auto rounded">
+          <h2 class="section-heading mb-0">
+            <span class="section-heading-lower">Remove A Car</span>
+          </h2>
         </div>
-        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ url_for('static', filename='img/urus.jpg') }}" alt="">
-        <div class="product-item-description d-flex ml-auto">
-          <div class="bg-faded p-5 rounded">
-            <p class="mb-0">Our seasonal menu features delicious snacks, baked goods, and even full meals perfect for breakfast or lunchtime. We source our ingredients from local, oragnic farms whenever possible, alongside premium vendors for specialty goods.</p>
-          </div>
+      </div>
+      <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+        src="{{ url_for('static', filename='img/urus.jpg') }}" alt="">
+      <div class="product-item-description d-flex ml-auto">
+        <div class="bg-faded p-5 rounded">
+          <p class="mb-0">To Remove a Car Make press on the bin next to the Car Make Name.</p><br>
+          <ul class="collection with-header">
+            {% for car in cars %}
+            <li class="collection-item">
+              <div>{{ car.car_make }}
+                <div class="float-right">
+                  <a href="{{ url_for('remove_make', car_id=car._id) }}" class="icon">
+                    <i class="fa fa-trash-alt"></i>
+                  </a>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="page-section">
-    <div class="container">
-      <div class="product-item">
-        <div class="product-item-title d-flex">
-          <div class="bg-faded p-5 d-flex ml-auto rounded">
-            <h2 class="section-heading mb-0">
-              <span class="section-heading-upper">From Around the World</span>
-              <span class="section-heading-lower">Bulk Speciality Blends</span>
-            </h2>
-          </div>
-        </div>
-        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ url_for('static', filename='img/gwagon.jpg') }}" alt="">
-        <div class="product-item-description d-flex mr-auto">
-          <div class="bg-faded p-5 rounded">
-            <p class="mb-0">Travelling the world for the very best quality coffee is something take pride in. When you visit us, you'll always find new blends from around the world, mainly from regions in Central and South America. We sell our blends in smaller to large bulk quantities. Please visit us in person for more details.</p>
-          </div>
-        </div>
-      </div>
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+        src="{{ url_for('static', filename='img/gwagon.jpg') }}" alt="">
+
     </div>
-  </section>
+  </div>
+</section>
 {% endblock %}
