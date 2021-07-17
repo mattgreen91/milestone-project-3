@@ -22,6 +22,22 @@ button:focus {
     background-color: orange;
 }
 
+.redbutton {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+/* button hover colours */
+
+.orangehover:hover {
+    background-color: orange;
+    color: white;
+}
+
+.redbutton:hover {
+    background-color: red;
+    color: white
+}
+
 /* change input boxes font colour */
 
 ::placeholder {
