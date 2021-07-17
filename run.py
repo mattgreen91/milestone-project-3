@@ -104,6 +104,9 @@ def add():
 @app.route("/edit/<post_id>", methods=["GET", "POST"])
 def edit(post_id):
     post = mongo.db.spotting_post.find_one({"_id": ObjectId(post_id)})
+    car = mongo.db.car.find().sort("car_make", 1)
+    location = mongo.db.location.find().sort("country", 1)
+    return render_template("edit.html", post=post, car=car, location=location)
 
 
 @app.route("/blog")
