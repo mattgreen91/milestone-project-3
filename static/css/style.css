@@ -188,6 +188,16 @@ h6 a:hover {
     text-decoration: none;
 }
 
+/* modifying hyperlinks on 500/404 pages */
+
+.orange {
+    color: orange;
+}
+
+.blackhover:hover {
+    color: black;
+}
+
 /* format drop down nav menu and container width for smaller screens */
 
 @media only screen and (max-width: 991px) {
