@@ -190,12 +190,12 @@ h6 a:hover {
 
 /* modifying hyperlinks on 500/404 pages */
 
-.orange {
-    color: orange;
+.hyperlink-lost {
+    color: black;
 }
 
-.blackhover:hover {
-    color: black;
+.hyperlink-lost:hover {
+    color: orange;
 }
 
 /* format drop down nav menu and container width for smaller screens */
