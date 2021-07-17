@@ -11,7 +11,19 @@
                   <span class="section-heading-upper">{{ username }}'s</span>
                   <span class="section-heading-lower">Account Settings</span>
                 </h2>
-                <h6>setting in here</h6>
+                <h6>Change Password</h6>
+                <form method="POST" action="{{ url_for('change_password', user_id=username._id) }}">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="fas fa-lock prefix light-grey-text"></i>
+                      <input id="password" name="password" type="password" minlength="8" maxlength="15" pattern ="^[a-zA-Z0-9]{8,15}$" title="Password can only be letters or numbers, between 8 and 15 in length" class="validate" required>
+                      <label for="password">New Password</label>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <button type="submit" class="col s12 btn-large orange">Change Password</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

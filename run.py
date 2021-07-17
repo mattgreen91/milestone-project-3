@@ -180,8 +180,23 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/change_password/<user_id>", methods=["GET", "POST"])
+def change_password(user_id):
+    username = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    if request.method == "POST":
+        submit = {
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+
+        flash("Password updated successfully")
+        return redirect(url_for("account_settings", username=username))
+
+    return render_template("account_settings.html")
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "0.0.0.0"),
         port=int(os.environ.get("PORT", "5000")),
-        debug=False)
+        debug=True)
