@@ -81,9 +81,29 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/add")
+@app.route("/add", methods=["GET", "POST"])
 def add():
-    return render_template("add.html")
+    if request.method == "POST":
+        post = {
+            "car_make": request.form.get("car_make"),
+            "car_model": request.form.get("car_model"),
+            "country": request.form.get("country"),
+            "city": request.form.get("city"),
+            "date_seen": request.form.get("date_seen"),
+            "posted_by": session["user"]
+        }
+        mongo.db.spotting_post.insert_one(post)
+        flash("Spotting Post Added Successfully")
+        return redirect(url_for("index"))
+
+    car = mongo.db.car.find().sort("car_make", 1)
+    location = mongo.db.location.find().sort("country", 1)
+    return render_template("add.html", car=car, location=location)
+
+
+@app.route("/edit/<post_id>", methods=["GET", "POST"])
+def edit(post_id):
+    post = mongo.db.spotting_post.find_one({"_id": ObjectId(post_id)})
 
 
 @app.route("/blog")
