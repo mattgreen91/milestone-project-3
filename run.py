@@ -29,6 +29,7 @@ def internal_error(e):
 @app.route("/")
 def index():
     posts = mongo.db.spotting_post.find()
+    
     return render_template("index.html", posts=posts, page_title="Home")
 
 
@@ -193,6 +194,13 @@ def change_password(user_id):
         return redirect(url_for("account_settings", username=username))
 
     return render_template("account_settings.html")
+
+
+@app.route("/delete_account/<user_id>")
+def delete_account(user_id):
+    mongo.db.users.remove({"_id": ObjectId(user_id)})
+    flash("User Deleted")
+    return redirect(url_for("logout"))
 
 
 if __name__ == "__main__":

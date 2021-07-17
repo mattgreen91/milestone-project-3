@@ -200,6 +200,12 @@ h6 a:hover {
     text-decoration: none;
 }
 
+/* centre divs */
+
+.centre {
+    margin: 0 auto;
+}
+
 /* format drop down nav menu and container width for smaller screens */
 
 @media only screen and (max-width: 991px) {
