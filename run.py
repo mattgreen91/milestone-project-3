@@ -103,10 +103,29 @@ def add():
 
 @app.route("/edit/<post_id>", methods=["GET", "POST"])
 def edit(post_id):
+    if request.method == "POST":
+        submit = {
+            "car_make": request.form.get("car_make"),
+            "car_model": request.form.get("car_model"),
+            "country": request.form.get("country"),
+            "city": request.form.get("city"),
+            "date_seen": request.form.get("date_seen"),
+            "posted_by": session["user"]
+        }
+        mongo.db.spotting_post.update({"_id": ObjectId(post_id)}, submit)
+        flash("Spotting Post Changed Successfully")
+
     post = mongo.db.spotting_post.find_one({"_id": ObjectId(post_id)})
     car = mongo.db.car.find().sort("car_make", 1)
     location = mongo.db.location.find().sort("country", 1)
     return render_template("edit.html", post=post, car=car, location=location)
+
+
+@app.route("/remove/<post_id>")
+def remove(post_id):
+    mongo.db.spotting_post.remove({"_id": ObjectId(post_id)})
+    flash("Spotting Post Has Been Removed")
+    return redirect(url_for("index"))
 
 
 @app.route("/blog")

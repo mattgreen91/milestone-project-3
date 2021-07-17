@@ -19,8 +19,16 @@
             Spotted in {{ post.city }}, {{ post.country }} by {{ post.posted_by }}<br>
             <br>
           </p>
-          <a href="" class="btn-small orange accent-4 modify">Done</a>
-          <a href="{{ url_for('edit', post_id=post._id) }}" class="btn-small grey modify">Edit</a>
+
+        {% if session.user|lower == "admin123" %}
+            <a href="{{ url_for('edit', post_id=post._id) }}" class="btn-small orange modify">Edit</a>
+            <a href="{{ url_for('remove', post_id=post._id) }}" class="btn-small red accent-4 modify">Remove</a>
+        {% else %}
+            {% if session.user|lower == post.posted_by|lower %}
+                <a href="{{ url_for('edit', post_id=post._id) }}" class="btn-small orange modify">Edit</a>
+                <a href="{{ url_for('remove', post_id=post._id) }}" class="btn-small red accent-4 modify">Remove</a>
+            {% endif %}
+        {% endif %}
         </div>
       </div>
     </div>
