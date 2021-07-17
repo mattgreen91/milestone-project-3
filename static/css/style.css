@@ -176,10 +176,16 @@ h6 a:hover {
     color: white;
 }
 
-/* format drop down nav menu for smaller screens */
+/* format drop down nav menu and container width for smaller screens */
 
 @media only screen and (max-width: 991px) {
 
+    .container {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
     .navbar-collapse {
         z-index: 1;
         background-color: rgba(0,0,0,0.5);
