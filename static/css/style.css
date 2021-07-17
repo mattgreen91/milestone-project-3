@@ -198,6 +198,10 @@ h6 a:hover {
     color: orange;
 }
 
+.hyperlink-lost a {
+    text-decoration: none;
+}
+
 /* format drop down nav menu and container width for smaller screens */
 
 @media only screen and (max-width: 991px) {
