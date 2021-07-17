@@ -76,9 +76,12 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
+@app.route("/modify_cars")
+def modify_cars():
+    if session["user"] == "admin123":
+        return render_template("modify_cars.html")
+    else:
+        return redirect(url_for("index"))
 
 
 @app.route("/add", methods=["GET", "POST"])
@@ -128,11 +131,6 @@ def remove(post_id):
     return redirect(url_for("index"))
 
 
-@app.route("/blog")
-def blog():
-    return render_template("blog.html")
-
-
 @app.route("/<username>", methods=["GET", "POST"])
 def account_settings(username):
     # take username from session on database
@@ -151,6 +149,11 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
