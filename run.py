@@ -16,6 +16,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_error(e):
+    return render_template('500.html'), 500
+
+
 @app.route("/")
 def index():
     posts = mongo.db.spotting_post.find()
@@ -168,16 +178,6 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
-
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
-
-
-@app.errorhandler(500)
-def internal_error(e):
-    return render_template('500.html'), 500
 
 
 if __name__ == "__main__":
