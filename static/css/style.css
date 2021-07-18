@@ -221,6 +221,14 @@ h6 a:hover {
     margin: 0 auto;
 }
 
+/* reduce size of search bar for smaller devices */
+
+@media only screen and (max-width: 1000px) {
+    #searchitem {
+        width: 35%;
+    }
+}
+
 /* format drop down nav menu and container width for smaller screens */
 
 @media only screen and (max-width: 991px) {
