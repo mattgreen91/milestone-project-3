@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Supercar Blog">
   <meta name="author" content="Matt Green">
-
   <title>Supercar Spotting</title>
-
   <!-- Favicon links -->
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
-
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
   <!-- Bootstrap core CSS -->
-  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
+  <link href="{{ url_for('static', filename='libraries/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Custom fonts for this template -->
   <link
     href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
-
   <!-- Custom styles for this template -->
-  <link href="{{ url_for('static', filename='css/business-casual.min.css') }}" rel="stylesheet">
-
+  <link href="{{ url_for('static', filename='libraries/css/business-casual.min.css') }}" rel="stylesheet">
   <!-- Font Awesome CSS-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" type="text/css">
-
   <!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     type="text/css">
-
   <!-- static CSS file -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-
   <!-- block custom scripts -->
   {% block styles %}
   {% endblock %}
-
 </head>
-
 <body>
-
   <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-upper text-primary mb-3">Supercar</span>
     <span class="site-heading-lower">Spotting</span>
   </h1>
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
@@ -68,9 +53,9 @@
             <a class="nav-link text-uppercase text-expanded" href="{{ url_for('add')}}">Add</a>
           </li>
           {% if session.user|lower == "admin123" %}
-              <li class="nav-item px-lg-4">
-                  <a class="nav-link text-uppercase text-expanded" href="{{ url_for('modify_cars')}}">Modify Cars</a>
-              </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{{ url_for('modify_cars')}}">Modify Cars</a>
+          </li>
           {% endif %}
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded"
@@ -91,7 +76,6 @@
       </div>
     </div>
   </nav>
-
   <!-- flash messages -->
   <section class="py-lg-4">
     {% with messages = get_flashed_messages() %}
@@ -104,40 +88,31 @@
     {% endif %}
     {% endwith %}
   </section>
-
   <!-- main content from static folder -->
   <main class="container">
     {% block content %}
     {% endblock %}
   </main>
-
   <footer class="footer text-faded text-center py-5">
     <div class="container">
       <p class="m-0 small">Copyright &copy; Matt Green <span id="copyright"></span></p>
     </div>
   </footer>
-
   <!-- Bootstrap core JavaScript -->
-  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='libraries/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='libraries/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script>
     $('#copyright').text(new Date().getFullYear());
   </script>
-
   <!-- JQuery Script -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
   <!-- Materialize Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
   <!-- static javascript file -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
   <!-- block custom scripts -->
   {% block scripts %}
   {% endblock %}
-
 </body>
-
 </html>

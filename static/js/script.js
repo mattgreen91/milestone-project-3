@@ -1,11 +1,11 @@
 // script for datepicker from materialize
 
 $(document).ready(function(){
-    $('.datepicker').datepicker();
-  });
+  $('.datepicker').datepicker();
+});
 
-  // script for drop down menu from materialize
+// script for drop down menu from materialize
 
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
+$(document).ready(function(){
+  $('select').formSelect();
+});
