@@ -28,8 +28,14 @@ def internal_error(e):
 
 @app.route("/")
 def index():
-    posts = mongo.db.spotting_post.find()
-    
+    posts = list(mongo.db.spotting_post.find())
+    return render_template("index.html", posts=posts, page_title="Home")
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    searchitem = request.form.get("searchitem")
+    posts = list(mongo.db.spotting_post.find({"$text": {"$search": searchitem}}))
     return render_template("index.html", posts=posts, page_title="Home")
 
 

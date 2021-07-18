@@ -3,12 +3,26 @@
 <div class="blog-title">
   <h2 class="section-heading mb-4 text-center">
     <span class="section-heading-lower">Search Below</span>
-    <br>
-    <div class="row">
-      <input type="text" name="search">
-    </div>
   </h2>
 </div>
+
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+        <div class="p-5 d-flex rounded centre">
+          <form action="{{ url_for('search') }}" method="POST">
+            <input type="text" name="searchitem" id="searchitem">
+            <a class="btn-small red modify blacktext" href="{{ url_for('index') }}"><i class="fa fa-undo"></i></a>
+            <button type="submit" class="btn-small orange modify"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if posts|length > 0 %}
 <section class="page-section cta">
   <div class="blog-title">
     <h3 class="section-heading mb-4 text-center">
@@ -45,4 +59,16 @@
   </div>
   {% endfor %}
 </section>
+
+{% else %}
+<section class="page-section cta">
+  <div class="blog-title">
+    <h3 class="section-heading mb-4 text-center">
+      No Results Found
+    </h3>
+  </div>
+</section>
+
+{% endif %}
+
 {% endblock %}
