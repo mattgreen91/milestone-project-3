@@ -197,7 +197,8 @@ def change_password(user_id):
 def delete_account(user_id):
     mongo.db.users.delete_one({"_id": ObjectId(user_id)})
     flash("User Deleted")
-    return redirect(url_for("logout"))
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
