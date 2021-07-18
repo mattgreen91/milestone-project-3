@@ -8,7 +8,7 @@
             <div class="col-xl-9 col-lg-10 mx-auto">
               <div class="bg-faded rounded p-5">
                 <h2 class="section-heading mb-4">
-                  <span class="section-heading-upper">{{ username }}'s</span>
+                  <span class="section-heading-upper">{{ user.username }}'s</span>
                   <span class="section-heading-lower">Account Settings</span>
                 </h2>
               </div>
@@ -24,7 +24,7 @@
           <div class="product-item-title d-flex">
             <div class="bg-faded p-5 d-flex rounded centre">
               
-              <form method="POST" action="{{ url_for('change_password', user_id=username._id) }}">
+              <form method="POST" action="{{ url_for('change_password', user_id=user._id) }}">
                 <h6 class="center">Change Password</h6><br>
                 <div class="row">
                   <div class="input-field col s12">

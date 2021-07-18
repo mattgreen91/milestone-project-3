@@ -109,7 +109,7 @@ def new_make():
 
 @app.route("/remove_make/<car_id>")
 def remove_make(car_id):
-    mongo.db.car.remove({"_id": ObjectId(car_id)})
+    mongo.db.car.delete_one({"_id": ObjectId(car_id)})
     flash("Car Make Has Been Removed")
     return redirect(url_for("modify_cars"))
 
@@ -156,7 +156,7 @@ def edit(post_id):
 
 @app.route("/remove/<post_id>")
 def remove(post_id):
-    mongo.db.spotting_post.remove({"_id": ObjectId(post_id)})
+    mongo.db.spotting_post.delete_one({"_id": ObjectId(post_id)})
     flash("Spotting Post Has Been Removed")
     return redirect(url_for("index"))
 
@@ -164,11 +164,11 @@ def remove(post_id):
 @app.route("/<username>", methods=["GET", "POST"])
 def account_settings(username):
     # take username from session on database
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    
-    if session["user"]:
-        return render_template("account_settings.html", username=username)
+    user = mongo.db.users.find_one(
+        {"username": username})
+
+    if username:
+        return render_template("account_settings.html", user=user)
 
     return redirect(url_for("login.html"))
 
@@ -183,22 +183,19 @@ def logout():
 
 @app.route("/change_password/<user_id>", methods=["GET", "POST"])
 def change_password(user_id):
-    username = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    
     if request.method == "POST":
-        submit = {
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+        mongo.db.users.update_one({"_id": ObjectId(user_id)},{"$set":{"password": generate_password_hash(request.form.get("password"))}})
 
         flash("Password updated successfully")
-        return redirect(url_for("account_settings", username=username))
+        return redirect(url_for("account_settings", username=session["user"]))
 
     return render_template("account_settings.html")
 
 
 @app.route("/delete_account/<user_id>")
 def delete_account(user_id):
-    mongo.db.users.remove({"_id": ObjectId(user_id)})
+    mongo.db.users.delete_one({"_id": ObjectId(user_id)})
     flash("User Deleted")
     return redirect(url_for("logout"))
 
