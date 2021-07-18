@@ -203,7 +203,7 @@ h6 a:hover {
 /* search box styling */
 
 #searchitem {
-    width: 110px;
+    width: 50%;
     font-size: 30px;
     color: white;
     border-style: 2px solid orange;
@@ -213,10 +213,6 @@ h6 a:hover {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     margin-left: 40px;
-  }
-  
-  #searchitem:focus {
-    width: 50%;
   }
 
 /* centre divs */
