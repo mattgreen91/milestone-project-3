@@ -2,16 +2,22 @@
 {% block content %}
 <div class="blog-title">
   <h2 class="section-heading mb-4 text-center">
-    <span class="section-heading-lower">See Below The Latest Spottings</span>
-  </h2>
-</div>
-<section class="page-section cta">
-
-  {% for post in posts %}
-  <div class="container">
+    <span class="section-heading-lower">Search Below</span>
+    <br>
     <div class="row">
       <input type="text" name="search">
     </div>
+  </h2>
+</div>
+<section class="page-section cta">
+  <div class="blog-title">
+    <h3 class="section-heading mb-4 text-center">
+      Latest Spottings
+    </h3>
+    <br>
+  </div>
+  {% for post in posts %}
+  <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
         <div class="cta-inner text-center rounded">

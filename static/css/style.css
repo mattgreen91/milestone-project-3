@@ -209,13 +209,14 @@ input[type=search]:not(.browser-default) {
     font-size: 30px;
     border-bottom: none;
     color: rgb(206, 177, 177);
-    background-color: rgba(rgb(255, 153, 0), green, blue, 0.3);
+    background-color: rgba(rgb(255, 153, 0), green, blue, 0.9);
     background-image: url("/static/img/searchicon.png");
     background-position: 0px 20px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+    margin-left: 40px;
   }
   
   input[type=text]:focus {
