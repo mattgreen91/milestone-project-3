@@ -161,14 +161,17 @@ def remove(post_id):
     return redirect(url_for("index"))
 
 
-@app.route("/<username>", methods=["GET", "POST"])
-def account_settings(username):
+@app.route("/account_settings", methods=["GET", "POST"])
+def account_settings():
     # take username from session on database
-    user = mongo.db.users.find_one(
+    if session["user"]:
+        username = session["user"]
+
+        user = mongo.db.users.find_one(
         {"username": username})
 
-    if user:
-        return render_template("account_settings.html", user=user)
+        if user:
+            return render_template("account_settings.html", user=user)
 
     return redirect(url_for("login.html"))
 
