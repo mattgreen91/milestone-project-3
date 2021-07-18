@@ -3,7 +3,7 @@
 <section class="page-section about-heading">
   <div class="container">
     <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{ url_for('static', filename='img/bmw.jpg') }}"
-      alt="">
+      alt="bmw">
     <div class="about-heading-content">
       <div class="row">
         <div class="col-xl-9 col-lg-10 mx-auto">
@@ -11,60 +11,68 @@
             <h2 class="section-heading mb-4">
               <span class="section-heading-upper text-center">Edit Your</span>
               <span class="section-heading-lower text-center">Car Spotting Post</span>
-              </h2>
-              <form method="POST" action="{{ url_for('edit', post_id=post._id) }}">
-                <div class="row">
-                  <div class="input-field col s12">
-                    <select id="car_make" name="car_make" class="validate" required>
-                      <option value="" disabled>Car Make</option>
-                      {% for car in car %}
-                          {% if car.car_make == post.car_make %}
-                              <option value="{{ car.car_make }}" selected>{{ car.car_make }}</option>
-                          {% else %}
-                              <option value="{{ car.car_make }}">{{ car.car_make }}</option>
-                          {% endif %}
-                      {% endfor %}
-                    </select>
-                  </div>
+            </h2>
+            <form method="POST" action="{{ url_for('edit', post_id=post._id) }}">
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="car_make" name="car_make" class="validate" required>
+                    <option value="" disabled>Car Make</option>
+                    <!-- below will show the car make chosen to edit -->
+                    {% for car in car %}
+                    {% if car.car_make == post.car_make %}
+                    <option value="{{ car.car_make }}" selected>{{ car.car_make }}</option>
+                    {% else %}
+                    <option value="{{ car.car_make }}">{{ car.car_make }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="car_model" name="car_model" class="validate" value="{{ post.car_model }}" required>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <!-- below will show the car model chosen to edit -->
+                  <input id="car_model" name="car_model" class="validate" value="{{ post.car_model }}" required>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <select id="country" name="country" class="validate" required>
-                      <option value="" disabled>Country</option>
-                      {% for location in location %}
-                          {% if location.country == post.country %}
-                              <option value="{{ location.country }}" selected>{{ location.country }}</option>
-                          {% else %}
-                              <option value="{{ location.country }}">{{ location.country }}</option>
-                          {% endif %}
-                      {% endfor %}
-                    </select>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="country" name="country" class="validate" required>
+                    <option value="" disabled>Country</option>
+                    <!-- below will show the country chosen to edit -->
+                    {% for location in location %}
+                    {% if location.country == post.country %}
+                    <option value="{{ location.country }}" selected>{{ location.country }}</option>
+                    {% else %}
+                    <option value="{{ location.country }}">{{ location.country }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="city" name="city" class="validate" value="{{ post.city }}" required>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <!-- below will show the city chosen to edit -->
+                  <input id="city" name="city" class="validate" value="{{ post.city }}" required>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" class="datepicker" id="date_seen" name="date_seen" class="validate" value="{{ post.date_seen }}" required>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <!-- below will show the date seen chosen to edit -->
+                  <input type="text" class="datepicker" id="date_seen" name="date_seen" class="validate"
+                    value="{{ post.date_seen }}" required>
                 </div>
-                <div class="text-center">
-                  <a class="btn waves-effect waves-light red redbutton" href="{{ url_for('index')}}">Go Back  
-                    <i class="fas fa-arrow-circle-left"></i>
-                  </a>
-                  <button class="btn waves-effect waves-light orangehover" type="submit" name="action">Save Changes  
+              </div>
+              <div class="text-center">
+                <!-- button to cancel and go back -->
+                <a class="btn waves-effect waves-light red redbutton" href="{{ url_for('index')}}">Go Back
+                  <i class="fas fa-arrow-circle-left"></i>
+                </a>
+                <!-- button to save changes -->
+                <button class="btn waves-effect waves-light orangehover" type="submit" name="action">Save Changes
                   <i class="fas fa-check-circle"></i>
-                  </button>
-                </div>
-              </form>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

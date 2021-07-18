@@ -1,59 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
-    <section class="page-section about-heading">
-      <div class="container">
-        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{ url_for('static', filename='img/cclass.jpg') }}" alt="">
-        <div class="about-heading-content">
-          <div class="row">
-            <div class="col-xl-9 col-lg-10 mx-auto">
-              <div class="bg-faded rounded p-5">
-                <h2 class="section-heading mb-4">
-                  <span class="section-heading-upper">{{ user.username }}'s</span>
-                  <span class="section-heading-lower">Account Settings</span>
-                </h2>
+<section class="page-section about-heading">
+  <div class="container">
+    <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0"
+      src="{{ url_for('static', filename='img/cclass.jpg') }}" alt="cclass">
+    <div class="about-heading-content">
+      <div class="row">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded rounded p-5">
+            <h2 class="section-heading mb-4">
+              <!-- current active username is shown below -->
+              <span class="section-heading-upper">{{ user.username }}'s</span>
+              <span class="section-heading-lower">Account Settings</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+        <div class="bg-faded p-5 d-flex rounded centre">
+          <!-- below is form for changing password -->
+          <form method="POST" action="{{ url_for('change_password', user_id=user._id) }}">
+            <h6 class="center">Change Password</h6><br>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="fas fa-lock prefix light-grey-text"></i>
+                <input id="password" name="password" type="password" minlength="8" maxlength="15"
+                  pattern="^[a-zA-Z0-9]{8,15}$"
+                  title="Password can only be letters or numbers, between 8 and 15 in length" 
+                  class="validate" required>
+                <label for="password">New Password</label>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page-section">
-      <div class="container">
-        <div class="product-item">
-          <div class="product-item-title d-flex">
-            <div class="bg-faded p-5 d-flex rounded centre">
-              
-              <form method="POST" action="{{ url_for('change_password', user_id=user._id) }}">
-                <h6 class="center">Change Password</h6><br>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <i class="fas fa-lock prefix light-grey-text"></i>
-                    <input id="password" name="password" type="password" minlength="8" maxlength="15" pattern ="^[a-zA-Z0-9]{8,15}$" title="Password can only be letters or numbers, between 8 and 15 in length" class="validate" required>
-                    <label for="password">New Password</label>
-                  </div>
-                  </div>
-                  <div class="row">
-                  <button type="submit" class="col s12 btn-large orange">Change Password</button>
-                </div>
-              </form>
+            <div class="row">
+              <button type="submit" class="col s12 btn-large orange">Change Password</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-    </section>
-   
-    <section class="page-section">
-      <div class="container">
-        <div class="product-item">
-          <div class="product-item-title d-flex">
-            <div class="bg-faded p-5 d-flex rounded centre">
-              <a class="mb-0 btn-large red" href="{{ url_for('delete_account', user_id=user._id) }}">
-                Delete My Account
-              </a>
-            </div>
-          </div>
+    </div>
+  </div>
+</section>
+<section class="page-section">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-item-title d-flex">
+        <div class="bg-faded p-5 d-flex rounded centre">
+          <!-- button for deleting user account -->
+          <a class="mb-0 btn-large red" href="{{ url_for('delete_account', user_id=user._id) }}">
+            Delete My Account
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 {% endblock %}

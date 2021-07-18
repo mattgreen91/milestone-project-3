@@ -3,7 +3,7 @@
 <section class="page-section about-heading">
   <div class="container">
     <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{ url_for('static', filename='img/bmw.jpg') }}"
-      alt="">
+      alt="bmw">
     <div class="about-heading-content">
       <div class="row">
         <div class="col-xl-9 col-lg-10 mx-auto">
@@ -11,49 +11,51 @@
             <h2 class="section-heading mb-4">
               <span class="section-heading-upper text-center">Tell Us About Your</span>
               <span class="section-heading-lower text-center">Car Spotting</span>
-              </h2>
-              <form method="POST" action="{{ url_for('add') }}">
-                <div class="row">
-                  <div class="input-field col s12">
-                    <select id="car_make" name="car_make" class="validate" required>
-                      <option value="" disabled selected>Car Make</option>
-                      {% for car in car %}
-                          <option value="{{ car.car_make }}">{{ car.car_make }}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
+            </h2>
+            <!-- import fields for adding car spotting details -->
+            <form method="POST" action="{{ url_for('add') }}">
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="car_make" name="car_make" class="validate" required>
+                    <option value="" disabled selected>Car Make</option>
+                    {% for car in car %}
+                    <option value="{{ car.car_make }}">{{ car.car_make }}</option>
+                    {% endfor %}
+                  </select>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input placeholder="Car Model" id="car_model" name="car_model" class="validate" required>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Car Model" id="car_model" name="car_model" class="validate" required>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <select id="country" name="country" class="validate" required>
-                      <option value="" disabled selected>Country</option>
-                      {% for location in location %}
-                          <option value="{{ location.country }}">{{ location.country }}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="country" name="country" class="validate" required>
+                    <option value="" disabled selected>Country</option>
+                    {% for location in location %}
+                    <option value="{{ location.country }}">{{ location.country }}</option>
+                    {% endfor %}
+                  </select>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input placeholder="City" id="city" name="city" class="validate" required>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="City" id="city" name="city" class="validate" required>
                 </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" class="datepicker" value="Date Seen" id="date_seen" name="date_seen" class="validate" required>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" class="datepicker" value="Date Seen" id="date_seen" name="date_seen"
+                    class="validate" required>
                 </div>
-                <div class="text-center">
-                <button class="btn waves-effect waves-light orangehover" type="submit" name="action">Add Spotting 
+              </div>
+              <div class="text-center">
+                <button class="btn waves-effect waves-light orangehover" type="submit" name="action">Add Spotting
                   <i class="fas fa-car"></i>
                 </button>
-                </div>
-              </form>
+              </div>
+            </form>
           </div>
         </div>
       </div>

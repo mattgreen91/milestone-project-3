@@ -10,17 +10,23 @@
     <div class="product-item">
       <div class="product-item-title d-flex">
         <div class="p-5 d-flex rounded centre">
+          <!-- search bar -->
           <form action="{{ url_for('search') }}" method="POST">
-              <input type="text" name="searchitem" id="searchitem">
-              <a class="btn-small red modify blacktext" href="{{ url_for('index') }}"><i class="fa fa-undo"></i></a>
-              <button type="submit" class="btn-small orange modify"><i class="fa fa-search"></i></button>
+            <input type="text" name="searchitem" id="searchitem">
+            <!-- undo and search buttons -->
+            <a class="btn-small red modify blacktext" href="{{ url_for('index') }}">
+              <i class="fa fa-undo"></i>
+            </a>
+            <button type="submit" class="btn-small orange modify">
+              <i class="fa fa-search"></i>
+            </button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </section>
-
+<!-- shows all results, or searched result only, otherwise will show no results found at bottom -->
 {% if posts|length > 0 %}
 <section class="page-section cta">
   <div class="blog-title">
@@ -29,6 +35,7 @@
     </h3>
     <br>
   </div>
+  <!-- displays each individual post from mongodb -->
   {% for post in posts %}
   <div class="container">
     <div class="row">
@@ -42,11 +49,12 @@
             Spotted in {{ post.city }}, {{ post.country }} by {{ post.posted_by }}<br>
             <br>
           </p>
-
+          <!-- only admin can see the edit or remove buttons for all posts -->
           {% if session.user|lower == "admin123" %}
           <a href="{{ url_for('edit', post_id=post._id) }}" class="btn-small orange modify">Edit</a>
           <a href="{{ url_for('remove', post_id=post._id) }}" class="btn-small red accent-4 modify">Remove</a>
           {% else %}
+          <!-- only user who is logged in can edit or remove their own post (or admin above) -->
           {% if session.user|lower == post.posted_by|lower %}
           <a href="{{ url_for('edit', post_id=post._id) }}" class="btn-small orange modify">Edit</a>
           <a href="{{ url_for('remove', post_id=post._id) }}" class="btn-small red accent-4 modify">Remove</a>
@@ -58,7 +66,7 @@
   </div>
   {% endfor %}
 </section>
-
+<!-- if no results found in seach, below will show -->
 {% else %}
 <section class="page-section cta">
   <div class="blog-title">
@@ -67,7 +75,5 @@
     </h3>
   </div>
 </section>
-
 {% endif %}
-
 {% endblock %}

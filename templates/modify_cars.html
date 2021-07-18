@@ -11,9 +11,10 @@
         </div>
       </div>
       <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
-        src="{{ url_for('static', filename='img/porche.jpg') }}" alt="">
+        src="{{ url_for('static', filename='img/porsche.jpg') }}" alt="porsche">
       <div class="product-item-description d-flex mr-auto">
         <div class="bg-faded p-5 rounded">
+          <!-- option to insert a new car make to database -->
           <form method="POST" action="{{ url_for('new_make') }}">
             <div class="row">
               <div class="input-field col s12">
@@ -32,7 +33,6 @@
     </div>
   </div>
 </section>
-
 <section class="page-section">
   <div class="container">
     <div class="product-item">
@@ -44,15 +44,17 @@
         </div>
       </div>
       <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
-        src="{{ url_for('static', filename='img/urus.jpg') }}" alt="">
+        src="{{ url_for('static', filename='img/urus.jpg') }}" alt="urus">
       <div class="product-item-description d-flex ml-auto">
         <div class="bg-faded p-5 rounded">
           <p class="mb-0">To Remove a Car Make press on the bin next to the Car Make Name.</p><br>
           <ul class="collection with-header">
+            <!-- displays all car makes in database -->
             {% for car in cars %}
             <li class="collection-item">
               <div>{{ car.car_make }}
                 <div class="float-right">
+                  <!-- trash bin button to remove car make from database -->
                   <a href="{{ url_for('remove_make', car_id=car._id) }}" class="icon">
                     <i class="fa fa-trash-alt"></i>
                   </a>
@@ -66,13 +68,11 @@
     </div>
   </div>
 </section>
-
 <section class="page-section">
   <div class="container">
     <div class="product-item">
       <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
-        src="{{ url_for('static', filename='img/gwagon.jpg') }}" alt="">
-
+        src="{{ url_for('static', filename='img/gwagon.jpg') }}" alt="gwagon">
     </div>
   </div>
 </section>
