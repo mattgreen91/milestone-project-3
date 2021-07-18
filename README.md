@@ -12,7 +12,16 @@ The website was created using HTML5, CSS, Javascript, JQuery, Python, MongoDB an
 
 The website has been designed and tested to be fully functional on all devices, including a drop-down mobile navigation menu for smaller devices.
 
-<img src="readme-files/screenshots.png" width="800" style="margin: 0;">
+<img src="readme-files/s1.png" width="300" style="margin: 0;">
+<img src="readme-files/s2.png" width="300" style="margin: 0;">
+<img src="readme-files/s3.png" width="300" style="margin: 0;">
+<img src="readme-files/s4.png" width="300" style="margin: 0;">
+<img src="readme-files/s5.png" width="300" style="margin: 0;">
+<img src="readme-files/s6.png" width="300" style="margin: 0;">
+<img src="readme-files/s8.png" width="600" style="margin: 0;">
+<img src="readme-files/s7.png" width="330" style="margin: 0;">
+<img src="readme-files/s9.png" width="200" style="margin: 0;">
+
  
 ## Contents Page
 
@@ -52,8 +61,12 @@ The website has been designed and tested to be fully functional on all devices, 
 
 This project was designed with Balsamiq Wireframes, which can be seen below:
 
-<img src="readme-files/wireframe_1.png" width="800" style="margin: 0;">
-<img src="readme-files/wireframe_2.png" width="800" style="margin: 0;">
+<img src="readme-files/1.png" width="200" style="margin: 0;">
+<img src="readme-files/2.png" width="100" style="margin: 0;">
+<img src="readme-files/3.png" width="200" style="margin: 0;">
+<img src="readme-files/4.png" width="200" style="margin: 0;">
+<img src="readme-files/5.png" width="200" style="margin: 0;">
+<img src="readme-files/6.png" width="200" style="margin: 0;">
 
 As my project was based on Data Centric rather than Front End, I used a Library from [StartBootstrap](https://startbootstrap.com/)
 
@@ -65,7 +78,7 @@ The project has many features such as:
 * Fall-back fonts, in case Google Fonts are not compatible with the browser - built in with the library
 * Alternate Text' attributes for images, in case the images do not display
 
-<img src="assets/readme-files/alt_labels.png" width="300" style="margin: 0;">
+<img src="readme-files/alt_labels.png" width="100" style="margin: 0;">
 
 * @media Queries, to modify content to fit different sized screens
 
@@ -190,7 +203,7 @@ Open the Deploy section and click 'Connect to GithHub'
 
 Search for your repository by the repository name and connect
 
-The hidden variables such as IP Address and Port, SECRET_KEY, MONGO_URI and MONGO_DBNAME need to be recorded in Heroku.  This is the same details on the env.py file.
+The hidden variables such as IP Address and Port, SECRET_KEY, MONGO_URI and MONGO_DBNAME need to be recorded in Heroku.  This is the same details on your `env.py` file.
 Go to Settings, click Reveal Config Vars and write the correct values.
 
 Click on Deploy Branch, then enable Auto Deploy. 
