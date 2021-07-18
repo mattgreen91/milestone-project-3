@@ -167,7 +167,7 @@ def account_settings(username):
     user = mongo.db.users.find_one(
         {"username": username})
 
-    if username:
+    if user:
         return render_template("account_settings.html", user=user)
 
     return redirect(url_for("login.html"))
