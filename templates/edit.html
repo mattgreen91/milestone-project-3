@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <select id="car_make" name="car_make" class="validate" required>
-                    <option value="" disabled>Car Make</option>
+                    <option value=" " disabled>Car Make</option>
                     <!-- below will show the car make chosen to edit -->
                     {% for car in car %}
                     {% if car.car_make == post.car_make %}
@@ -37,7 +37,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <select id="country" name="country" class="validate" required>
-                    <option value="" disabled>Country</option>
+                    <option value=" " disabled>Country</option>
                     <!-- below will show the country chosen to edit -->
                     {% for location in location %}
                     {% if location.country == post.country %}
@@ -58,7 +58,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <!-- below will show the date seen chosen to edit -->
-                  <input type="text" class="datepicker" id="date_seen" name="date_seen" class="validate"
+                  <input type="text" class="datepicker validate" id="date_seen" name="date_seen"
                     value="{{ post.date_seen }}" required>
                 </div>
               </div>
