@@ -206,7 +206,9 @@ h6 a:hover {
     width: 50%;
     font-size: 30px;
     color: white;
-    border-style: 2px orange;
+    border-style: solid;
+    border-width: 2px;
+    border-color: orange;
     color: rgb(206, 177, 177);
     background-color: rgba(255, 153, 0, 0.9);
     padding: 12px 12px 12px 12px;
