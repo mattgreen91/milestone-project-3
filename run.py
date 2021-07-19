@@ -1,5 +1,6 @@
 import os
-from flask import (Flask, flash, render_template, redirect, request, session, url_for)
+from flask import (
+    Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -40,7 +41,9 @@ def search():
     # takes the search item from the index page
     searchitem = request.form.get("searchitem")
     # looks for the index of text value in mongodb
-    posts = list(mongo.db.spotting_post.find({"$text": {"$search": searchitem}}))
+    posts = list(
+        mongo.db.spotting_post.find(
+            {"$text": {"$search": searchitem}}))
     return render_template("index.html", posts=posts, page_title="Home")
 
 
@@ -81,7 +84,7 @@ def login():
         if existing_user:
             # check hashed password matches same user inputted
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome back {}".format(
                         request.form.get("username")))
@@ -92,7 +95,7 @@ def login():
                 flash("Incorrect login details entered. Please try again")
                 return redirect(url_for("login"))
 
-        else: 
+        else:
             # incorrect username
             flash("Incorrect login details entered. Please try again")
             return redirect(url_for("login"))
@@ -190,7 +193,7 @@ def account_settings():
 
         # checks user is in mongodb
         user = mongo.db.users.find_one(
-        {"username": username})
+            {"username": username})
 
         if user:
             # displays account settings for the user in session
@@ -209,12 +212,13 @@ def logout():
 
 @app.route("/change_password/<user_id>", methods=["GET", "POST"])
 def change_password(user_id):
-    
+
     # changes only the password of the user id
     if request.method == "POST":
         mongo.db.users.update_one(
-            {"_id": ObjectId(user_id)},{"$set":{"password": generate_password_hash(
-                request.form.get("password"))}})
+            {"_id": ObjectId(
+                user_id)}, {"$set": {"password": generate_password_hash(
+                    request.form.get("password"))}})
 
         flash("Password updated successfully")
         return redirect(url_for("account_settings", username=session["user"]))
