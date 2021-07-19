@@ -104,6 +104,7 @@ The main features of this project are:
 - Admin is the only account who can edit and delete all posts.
 - User has option to change their password whenever they want
 - If user wishes to delete their account, they are able to do securely.
+- Website environment file (env.py) was saved into .gitignore to avoid tracking as secure
 
 
 **Search Bar**
