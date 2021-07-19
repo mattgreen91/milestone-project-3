@@ -93,6 +93,19 @@ The main features of this project are:
 - Fade effect - a lot of the content (including mobile navigation menu) has opacity background, to add style.
 - Search bar - to make it easier to find posts when lots of data
 
+**Security**
+
+- The app uses Password Hash to ensure passwords cannot be stolen.
+- Secret key generated used [Passwords Generator](https://passwordsgenerator.net/) so cannot be guessed easily.
+- Any non-admin user who tries to enter 'Modify Cars' page gets redirected to home page.
+- Only Admin can see the link to the 'Modify Cars' page in the navigation bar.
+- When incorrect password or username is entered, the app doesn't reveal which is incorrect, instead generally states login details incorrect, to avoid someone knowing half login details, and guessing other half.
+- Users can only edit or delete their own posts, no one elses.
+- Admin is the only account who can edit and delete all posts.
+- User has option to change their password whenever they want
+- If user wishes to delete their account, they are able to do securely.
+
+
 **Search Bar**
 
 The search bar was made with the help of [W3 Schools](https://www.w3schools.com/howto/howto_css_animated_search.asp).
