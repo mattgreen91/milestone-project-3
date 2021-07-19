@@ -17,7 +17,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <select id="car_make" name="car_make" class="validate" required>
-                    <option value=" " disabled selected>Car Make</option>
+                    <option value="" disabled selected>Car Make</option>
                     {% for car in car %}
                     <option value="{{ car.car_make }}">{{ car.car_make }}</option>
                     {% endfor %}
@@ -32,7 +32,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <select id="country" name="country" class="validate" required>
-                    <option value=" " disabled selected>Country</option>
+                    <option value="" disabled selected>Country</option>
                     {% for location in location %}
                     <option value="{{ location.country }}">{{ location.country }}</option>
                     {% endfor %}
